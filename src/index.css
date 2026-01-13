@@ -13,7 +13,10 @@ html, body {
   @apply transition-colors duration-300 bg-white text-gray-900;
 }
 
+.light {
+  @apply bg-white text-gray-900;
+}
+
 .dark {
   @apply bg-gray-900 text-gray-100;
 }
-
