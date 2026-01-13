@@ -1,18 +1,24 @@
 @import "tailwindcss";
 
-/* Define the custom dark variant here (outside @theme) */
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* Custom properties go inside @theme */
 @theme {
   --color-brand: #4f46e5;
 }
 
-/* Global styles */
+/* Global styles - REMOVE bg-white from here */
 html, body {
-  @apply transition-colors duration-300 bg-white text-gray-900;
+  margin: 0;
+  padding: 0;
 }
 
+/* These will now only work when a parent has the .dark or .light class */
 .light {
-  @apply bg-white text-gray-900;
+  background-color: white;
+  color: #111827; /* gray-900 */
+}
+
+.dark {
+  background-color: #111827;
+  color: #f3f4f6; /* gray-100 */
 }

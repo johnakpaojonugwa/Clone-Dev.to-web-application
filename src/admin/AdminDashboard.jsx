@@ -48,10 +48,10 @@ export default function AdminDashboard() {
     {
       title: "Total Users",
       value: overview.totalUsers,
-      icon: <FaUsers size={32} />, 
+      icon: <FaUsers size={32} />,
       cardBg: "bg-indigo-600",
       iconBoxBg: "bg-white/10",
-      textColor: "text-white"
+      textColor: "text-white",
     },
     {
       title: "Total Posts",
@@ -59,33 +59,40 @@ export default function AdminDashboard() {
       icon: <FaFileAlt size={32} />,
       cardBg: "bg-emerald-600",
       iconBoxBg: "bg-white/10",
-      textColor: "text-white"
+      textColor: "text-white",
     },
   ];
 
   return (
-    <ConfigProvider theme={{ algorithm: isDarkMode ? theme.darkAlgorithm : theme.defaultAlgorithm }}>
-      <div className="p-6 md:p-8 space-y-8">
-        <div>
-          <h1 className="text-2xl font-bold text-gray-800 dark:text-gray-100 text-center">
-            Platform Statistics
-          </h1>
-        </div>
+    <ConfigProvider
+      theme={{
+        algorithm: isDarkMode ? theme.darkAlgorithm : theme.defaultAlgorithm,
+      }}
+    >
+      <div
+        className={`${
+          isDarkMode ? "dark" : "light"
+        } min-h-screen transition-colors duration-300`}
+      >
+        <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 p-6 md:p-8 space-y-8 min-h-screen">
+          <div>
+            <h1 className="text-2xl font-bold text-gray-800 dark:text-gray-100 text-center">
+              Platform Statistics
+            </h1>
+          </div>
 
-        {loading ? (
-          <div className="flex justify-center py-20">
-            <Spin size="large" />
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {cards.map((card) => (
-              <DashboardCard
-                key={card.title}
-                {...card}
-              />
-            ))}
-          </div>
-        )}
+          {loading ? (
+            <div className="flex justify-center py-20">
+              <Spin size="large" />
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+              {cards.map((card) => (
+                <DashboardCard key={card.title} {...card} />
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </ConfigProvider>
   );
@@ -93,8 +100,9 @@ export default function AdminDashboard() {
 
 function DashboardCard({ title, value, icon, cardBg, iconBoxBg, textColor }) {
   return (
-    <div className={`${cardBg} ${textColor} rounded-2xl p-8 flex items-center justify-between shadow-md border border-white/5`}>
-      
+    <div
+      className={`${cardBg} ${textColor} rounded-2xl p-8 flex items-center justify-between shadow-md border border-white/5`}
+    >
       {/* Content Section */}
       <div>
         <h3 className="text-xs font-bold opacity-70 uppercase tracking-widest mb-2">
@@ -106,7 +114,9 @@ function DashboardCard({ title, value, icon, cardBg, iconBoxBg, textColor }) {
       </div>
 
       {/* Icon Section */}
-      <div className={`${iconBoxBg} p-5 rounded-2xl flex items-center justify-center`}>
+      <div
+        className={`${iconBoxBg} p-5 rounded-2xl flex items-center justify-center`}
+      >
         {icon}
       </div>
     </div>
