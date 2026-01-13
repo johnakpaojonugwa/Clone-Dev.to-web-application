@@ -103,7 +103,7 @@ Contributions are welcome. Open an issue to discuss changes, then submit a pull 
 There is none as of now but will be sorted out soon
 
 # Clone: dev.to web application
-[🚀 Live Demo](https://clone-dev-to-web-application.vercel.app)
+[🚀 Live Demo](https://clone-devto.vercel.app/)
 
 ---
 

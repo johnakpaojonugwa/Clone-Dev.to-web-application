@@ -33,7 +33,7 @@ export default function LeftSidebar() {
   return (
     <div className="space-y-2">
       {/* MAIN NAV */}
-      <nav className="space-y-2 text-black">
+      <nav className="space-y-2">
         <SidebarItem icon={<FaHome size={20} />} label="Home" />
         <SidebarItem icon={<FaPlus size={20} />} label="DEV++" />
         <SidebarItem icon={<FaBook size={20} />} label="Reading List" />
