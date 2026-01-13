@@ -101,3 +101,14 @@ Contributions are welcome. Open an issue to discuss changes, then submit a pull 
 ## License
 
 There is none as of now but will be sorted out soon
+
+# Clone: dev.to web application
+[🚀 Live Demo](https://clone-dev-to-web-application.vercel.app)
+
+---
+
+## 🛠 Lessons Learned (Challenges)
+
+- **Dependency Management:** Navigated a peer dependency conflict between React 19 and older third-party libraries using the `--legacy-peer-deps` configuration.
+- **CI/CD Optimization:** Configured Vercel build pipelines to correctly map Vite's `dist` output and handle client-side routing rewrites.
+- **Platform Differences:** Resolved "Output Directory" errors by aligning Vercel's build settings with the Vite project structure.
