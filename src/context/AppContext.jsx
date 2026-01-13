@@ -15,11 +15,12 @@ const getInitialUser = () => {
 const getInitialToken = () =>
   localStorage.getItem("userToken") || localStorage.getItem("token") || null;
 
+const isAdminPath = () => typeof window !== "undefined" && window.location.pathname.startsWith("/admin");
+
 const getInitialTheme = () => {
   const savedTheme = localStorage.getItem("theme");
-  if (savedTheme) return savedTheme === "dark";
-  if (!window.location.pathname.startsWith("/admin")) return false;
-  return window.matchMedia("(prefers-color-scheme: light)").matches;
+  if (savedTheme) return isAdminPath() ? savedTheme === "dark" : false;
+  return isAdminPath() ? window.matchMedia("(prefers-color-scheme: dark)").matches : false;
 };
 
 export const AppProvider = ({ children }) => {
@@ -34,17 +35,23 @@ export const AppProvider = ({ children }) => {
     setIsDarkMode((prev) => !prev);
   }, []);
 
-  //Sync theme with localStorage and Document class
+  // Sync theme with localStorage and Document class, but only for admin routes
   useEffect(() => {
     const root = window.document.documentElement;
-    if (isDarkMode) {
-      root.classList.add("dark");
-      root.classList.remove("light");
-      localStorage.setItem("theme", "dark");
+    if (isAdminPath()) {
+      if (isDarkMode) {
+        root.classList.add("dark");
+        root.classList.remove("light");
+        localStorage.setItem("theme", "dark");
+      } else {
+        root.classList.remove("dark");
+        root.classList.add("light");
+        localStorage.setItem("theme", "light");
+      }
     } else {
+      // Ensure non-admin pages remain light
       root.classList.remove("dark");
       root.classList.add("light");
-      localStorage.setItem("theme", "light");
     }
   }, [isDarkMode]);
 
