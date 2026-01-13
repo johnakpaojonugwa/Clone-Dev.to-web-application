@@ -18,6 +18,7 @@ const getInitialToken = () =>
 const getInitialTheme = () => {
   const savedTheme = localStorage.getItem("theme");
   if (savedTheme) return savedTheme === "dark";
+  if (!window.location.pathname.startsWith("/admin")) return false;
   return window.matchMedia("(prefers-color-scheme: dark)").matches;
 };
 
