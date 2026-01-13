@@ -16,7 +16,3 @@ html, body {
 .light {
   @apply bg-white text-gray-900;
 }
-
-.dark {
-  @apply bg-gray-900 text-gray-100;
-}
