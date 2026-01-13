@@ -107,8 +107,16 @@ There is none as of now but will be sorted out soon
 
 ---
 
-## 🛠 Lessons Learned (Challenges)
+## 🔧 Technical Challenges & Solutions
 
-- **Dependency Management:** Navigated a peer dependency conflict between React 19 and older third-party libraries using the `--legacy-peer-deps` configuration.
-- **CI/CD Optimization:** Configured Vercel build pipelines to correctly map Vite's `dist` output and handle client-side routing rewrites.
-- **Platform Differences:** Resolved "Output Directory" errors by aligning Vercel's build settings with the Vite project structure.
+### 1. React 19 Peer Dependency Conflicts
+**Issue:** `jodit-react` and other libraries had strict peer dependencies for React 18, causing `npm install` to fail on Vercel.
+**Solution:** Implemented a `.npmrc` file with `legacy-peer-deps=true` and updated Vercel's install command to ensure compatibility without downgrading the core framework.
+
+### 2. SPA Routing 404s
+**Issue:** Refreshing the browser on sub-routes (like `/admin`) resulted in Vercel returning a 404 error.
+**Solution:** Configured a `vercel.json` rewrite rule to redirect all requests to the entry point (`index.html`), allowing `react-router-dom` to handle the routing.
+
+### 3. Build Output Mapping
+**Issue:** Vercel defaulted to a `/public` directory while Vite was generating a `/dist` folder.
+**Solution:** Overrode the Vercel build settings to explicitly point to the `dist` directory and ensured the build command was set to `npm run build`.
