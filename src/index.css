@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+/* 1. Define the custom dark variant here (outside @theme) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* 2. Custom properties go inside @theme */
+@theme {
+  --color-brand: #4f46e5;
+}
+
+/* 3. Global styles */
+html, body {
+  @apply transition-colors duration-300 bg-white text-gray-900;
+}
+
+html.dark body {
+  @apply bg-gray-900 text-gray-100;
+}
