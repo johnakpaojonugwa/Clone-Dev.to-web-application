@@ -93,7 +93,6 @@ export default function AdminDashboard() {
 
 function DashboardCard({ title, value, icon, cardBg, iconBoxBg, textColor }) {
   return (
-    /* Removed translate, scale, and decorative patterns to make it static */
     <div className={`${cardBg} ${textColor} rounded-2xl p-8 flex items-center justify-between shadow-md border border-white/5`}>
       
       {/* Content Section */}
@@ -106,7 +105,7 @@ function DashboardCard({ title, value, icon, cardBg, iconBoxBg, textColor }) {
         </p>
       </div>
 
-      {/* Icon Section - Solid Glass Box */}
+      {/* Icon Section */}
       <div className={`${iconBoxBg} p-5 rounded-2xl flex items-center justify-center`}>
         {icon}
       </div>

@@ -21,7 +21,7 @@ Steps:
 1. Clone the repo
 
 ```bash
-git clone https://github.com/your-username/blog-ui.git
+git clone https://github.com/johnakpaojonugwa/Clone-Dev.to-web-application.git
 cd blog-ui
 ```
 

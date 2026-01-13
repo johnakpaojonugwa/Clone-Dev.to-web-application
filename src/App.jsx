@@ -1,6 +1,5 @@
 import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
-// Fixed: ConfigProvider must be capitalized
 import { ConfigProvider, theme, Spin } from "antd";
 import { useApp } from "@/context/AppContext";
 import ProtectedRoute from "@/router/ProtectedRoute";
@@ -32,8 +31,6 @@ const LoadingFallback = () => (
 export default function App() {
   const { isDarkMode } = useApp();
 
-  // Tailwind gray-800 hex is #1f2937
-  // Tailwind gray-900 hex is #111827
   const customDarkBg = "#1f2937";
   const customDarkHeader = "#111827";
 
@@ -42,13 +39,11 @@ export default function App() {
       theme={{
         algorithm: isDarkMode ? theme.darkAlgorithm : theme.defaultAlgorithm,
         token: {
-          // This sets the global container background for AntD components
           colorBgContainer: isDarkMode ? customDarkBg : "#ffffff",
           colorBgElevated: isDarkMode ? "#2d3748" : "#ffffff",
         },
         components: {
           Table: {
-            // Setting the exact solid colors for the table
             headerBg: isDarkMode ? customDarkHeader : "#fafafa",
             colorBgContainer: isDarkMode ? customDarkBg : "#ffffff",
           },

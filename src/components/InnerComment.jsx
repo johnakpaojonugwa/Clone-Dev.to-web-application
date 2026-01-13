@@ -1,6 +1,5 @@
 export default function InnerComment({ author, avatar, date, text }) {
-  // --- Date Formatter ---
-  // This converts the Mongoose createdAt string into a readable format like "Jan 2, 2026"
+  // Date Formatter
   const formattedDate = date 
     ? new Date(date).toLocaleDateString(undefined, {
         month: "short",

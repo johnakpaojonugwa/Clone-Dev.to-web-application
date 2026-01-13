@@ -29,7 +29,7 @@ export default function SingleFeed() {
       setError(null);
 
       try {
-        // 1. Initiate both fetches in parallel
+        // Fetch Post and Comments in Parallel
         const postPromise = fetchPostById({
           baseURL,
           token: userToken,
@@ -44,13 +44,12 @@ export default function SingleFeed() {
           return res.json();
         });
 
-        // 2. Wait for both to resolve
         const [postData, commentData] = await Promise.all([
           postPromise,
           commentsPromise,
         ]);
 
-        // 3. Update State
+        // Update State
         setPost(postData);
         if (commentData.success) {
           setComments(commentData.data);
@@ -81,7 +80,7 @@ export default function SingleFeed() {
     return () => controller.abort();
   }, [id, baseURL, userToken, logout, navigate]);
 
-  // --- 1. DEFINE ACTIVE POST HERE (Top Level) ---
+  // DEFINE ACTIVE POST HERE TO AVOID REPEATED LOGIC
   const postsArray =
     post?.posts || post?.data || (Array.isArray(post) ? post : null);
   const activePost = postsArray ? postsArray.find((p) => p._id === id) : post;
@@ -95,7 +94,7 @@ export default function SingleFeed() {
           <aside className="col-span-1 hidden lg:block">
             <ReactionsBar
               post={activePost}
-              commentCount={comments.length} // Pass the real length here
+              commentCount={comments.length} 
             />
           </aside>
           <main className="col-span-12 lg:col-span-8">
@@ -127,7 +126,6 @@ export default function SingleFeed() {
           {/* Right sidebar */}
           <aside className="col-span-3 hidden lg:block">
             {loading ? (
-              // This shows while the API is fetching
               <div className="bg-white rounded-lg p-6 border border-gray-200">
                 <Skeleton
                   active
@@ -136,10 +134,8 @@ export default function SingleFeed() {
                 />
               </div>
             ) : activePost?.author ? (
-              // This shows once the data is ready
               <AuthorSidebar author={activePost.author} currentPostId={id} />
             ) : (
-              // Optional: what to show if there is no author found
               <div className="bg-white rounded-lg p-6 border border-gray-200 text-gray-400">
                 Author information unavailable
               </div>

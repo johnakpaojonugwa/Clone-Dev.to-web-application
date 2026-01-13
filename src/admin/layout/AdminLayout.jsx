@@ -92,7 +92,7 @@ export default function AdminLayout() {
 
         {/* Page content wrapper */}
         <section className="mt-20 p-6 md:p-8 min-h-[calc(100vh-80px)]">
-          {/* Breadcrumb - Adjusted for visibility in both modes */}
+          {/* Breadcrumb */}
           <div className="flex items-center gap-2 mb-6">
             <FaHome size={14} className="text-indigo-600 dark:text-indigo-400" />
             <MdOutlineKeyboardArrowRight size={14} className="text-gray-400" />
@@ -108,7 +108,7 @@ export default function AdminLayout() {
               </div>
             }
           >
-            {/* The actual page content via Outlet */}
+            {/* The actual Outlet */}
             <div className="animate-in fade-in duration-500">
               <Outlet />
             </div>

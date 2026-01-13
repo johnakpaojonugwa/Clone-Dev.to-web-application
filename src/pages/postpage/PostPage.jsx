@@ -28,7 +28,6 @@ const tagOptions = [
   { value: "programming", label: "programming" },
 ];
 
-// ... (imports remain the same)
 
 export default function CreatePost() {
   const { baseURL, userToken } = useApp();
@@ -57,7 +56,7 @@ export default function CreatePost() {
     }
   }, []);
 
-  // Updated Save Draft logic
+  // Save Draft logic
   const handleSaveDraft = () => {
     const currentContent = editorRef.current?.value || contentRef.current;
     
@@ -154,7 +153,7 @@ export default function CreatePost() {
           listType="picture"
           beforeUpload={(file) => {
             setCoverFile(file);
-            return false; // Manually handle upload
+            return false;
           }}
           onRemove={() => setCoverFile(null)}
         >
@@ -163,7 +162,7 @@ export default function CreatePost() {
 
         <JoditEditor
           ref={editorRef}
-          value={contentRef.current} // This sets the content when the draft is restored
+          value={contentRef.current}
           config={{
             readonly: false,
             height: 400,

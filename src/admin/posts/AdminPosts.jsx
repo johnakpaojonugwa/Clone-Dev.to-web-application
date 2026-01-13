@@ -17,7 +17,7 @@ import { DeleteOutlined } from "@ant-design/icons";
 const { Search } = Input;
 
 export default function AdminPosts() {
-  const { baseURL, userToken, isDarkMode } = useApp(); // Pulled isDarkMode
+  const { baseURL, userToken, isDarkMode } = useApp();
 
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -51,7 +51,7 @@ export default function AdminPosts() {
       content: `Are you sure you want to delete "${post.title}"?`,
       okText: "Delete",
       okType: "danger",
-      centered: true, // Matches your AdminUsers style
+      centered: true,
       onOk: async () => {
         try {
           setDeletingId(post._id);

@@ -41,7 +41,7 @@ export default function Login() {
 
       // Navigate based on role
       if (data?.user?.role === "admin") navigate("/admin");
-      else navigate("/login"); // Redirect regular users to Home, not unauthorized
+      else navigate("/login"); 
     } catch (error) {
       message.error("An error occurred. Please try again.");
     } finally {
@@ -57,7 +57,6 @@ export default function Login() {
     <div className="min-h-screen flex flex-col justify-center px-4 py-12 bg-gray-50 dark:bg-gray-900">
       <div className="text-center mb-8">
         <FaDev className="text-indigo-600 dark:text-indigo-500 text-[50px] mx-auto mb-4" />
-        {/* Fixed: text-gray-900 for light mode so it's visible */}
         <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white">
           Join the DEV community
         </h1>

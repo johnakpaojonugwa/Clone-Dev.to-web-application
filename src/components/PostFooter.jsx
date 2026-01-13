@@ -15,16 +15,13 @@ export default function PostFooter({
           onClick={onLikeClick}
           className="inline-flex items-center gap-1.5 px-3 py-1 cursor-pointer rounded hover:bg-gray-100 transition"
         >
-          {/* If isLiked is true: Show solid red heart
-             If isLiked is false: Show outline grey heart 
-          */}
+          
           {isLiked ? (
             <FaHeart size={18} className="text-red-500 transition-colors" />
           ) : (
             <FaRegHeart size={18} className="text-gray-400 transition-colors" />
           )}
 
-          {/* Also change the text color of the count */}
           <span className={isLiked ? "text-red-500 font-bold" : "text-gray-600"}>
             {reactions}
           </span>

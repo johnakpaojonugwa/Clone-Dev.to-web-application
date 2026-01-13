@@ -1,6 +1,5 @@
 import { FiMoreHorizontal } from "react-icons/fi";
 
-
 export default function Comment({ author, time, text }) {
 return (
 <div className="bg-white border border-gray-200 rounded-md p-4">

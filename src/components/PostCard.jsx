@@ -29,7 +29,6 @@ export default function PostCard() {
         page: pageNumber,
       });
 
-      // Support multiple response shapes: { data: [...] }, { posts: [...] }, or raw array
       const postsArray = res?.data ?? res?.posts ?? res ?? [];
       const uiPosts = (Array.isArray(postsArray) ? postsArray : [])
         .map(adaptPostToUI)
@@ -37,7 +36,7 @@ export default function PostCard() {
 
       setPosts((prev) => (pageNumber === 1 ? uiPosts : [...prev, ...uiPosts]));
 
-      // Determine pagination safely
+      // Determine pagination 
       const totalPages = res?.pages ?? res?.totalPages ?? null;
       if (totalPages != null) setHasMore(pageNumber < totalPages);
       else setHasMore(uiPosts.length > 0);

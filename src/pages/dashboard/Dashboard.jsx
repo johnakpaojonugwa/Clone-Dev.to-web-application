@@ -13,7 +13,7 @@ export default function Dashboard() {
   const [myPosts, setMyPosts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // 1. Wrap the fetcher in useCallback
+  // Wrapping the fetcher in useCallback
   const fetchEverything = useCallback(async () => {
     if (!userToken) {
       setLoading(false);
@@ -50,7 +50,7 @@ export default function Dashboard() {
     }
   }, [baseURL, userToken]);
 
-  // 2. Initial load
+  // Initial load
   useEffect(() => {
     fetchEverything();
   }, [fetchEverything]);
@@ -102,9 +102,6 @@ export default function Dashboard() {
               ) : myPosts.length > 0 ? (
                 <div className="divide-y divide-gray-100">
                   {myPosts.map((post) => (
-                    /* NOTE: If you use a custom PostRow component here, 
-                       pass fetchEverything as a prop to trigger updates!
-                    */
                     <div
                       key={post._id}
                       className="p-4 hover:bg-gray-50 flex justify-between items-center"

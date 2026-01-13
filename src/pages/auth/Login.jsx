@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { MdOutlineAlternateEmail } from "react-icons/md";
-import { message } from "antd";
+import { message, Spin } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useApp } from "@/context/AppContext";
 import {
@@ -53,7 +53,8 @@ export default function Login() {
       }
 
       // Save auth data via context helper
-      if (typeof login === "function") login({ user: data.user, token: data.token });
+      if (typeof login === "function")
+        login({ user: data.user, token: data.token });
 
       message.success("Login successful");
       navigate("/");
@@ -84,10 +85,9 @@ export default function Login() {
       <Header />
       <DevAppsSidebar />
       <div className="bg-white p-8 rounded-sm border border-gray-200 max-w-[1280px] mx-auto shadow-xs">
-        
         <div className="max-w-3xl mx-auto space-y-5">
           {/* Logo */}
-        <FaDev className="text-black text-[42px] cursor-pointer flex items-center justify-center mx-auto" />
+          <FaDev className="text-black text-[42px] cursor-pointer flex items-center justify-center mx-auto" />
           {/* Heading */}
           <h1 className="text-2xl font-bold text-center mb-1">
             Join the DEV community
@@ -151,15 +151,23 @@ export default function Login() {
                 />
               </div>
             </div>
-
             <button
               type="submit"
               disabled={loading}
-              className={`w-full py-4 rounded-sm text-white font-medium cursor-pointer ${
-                loading ? "bg-gray-400" : "bg-indigo-600 hover:bg-indigo-700"
+              className={`w-full py-4 rounded-sm text-white font-medium flex cursor-pointer justify-center gap-3 transition-all active:scale-[0.98] ${
+                loading
+                  ? "bg-indigo-400 cursor-not-allowed"
+                  : "bg-indigo-600 hover:bg-indigo-700 hover:shadow-indigo-200 dark:hover:shadow-none"
               }`}
             >
-              {loading ? "Logging in..." : "Log in"}
+              {loading ? (
+                <>
+                  <Spin size="small" />
+                  <span className="tracking-wide">Logging in...</span>
+                </>
+              ) : (
+                "Log in"
+              )}
             </button>
           </form>
 

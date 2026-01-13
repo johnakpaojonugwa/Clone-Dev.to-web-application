@@ -1,5 +1,5 @@
 export function adaptPostToUI(post) {
-  // If post is null or empty, return a safe empty object so the UI doesn't crash
+  // Safe guard for null or undefined post
   if (!post) return { id: null, author: {}, tags: [], reactions: 0 };
 
   // Handle the case where the post might be wrapped (data.post)
@@ -8,7 +8,7 @@ export function adaptPostToUI(post) {
   return {
     id: p._id || p.id,
     title: p.title || "Untitled",
-    content: p.content || "", // Important for the Markdown viewer
+    content: p.content || "", 
     tags: Array.isArray(p.tags) ? p.tags : [],
     reactions: p.likes?.length || 0,
     dislikes: p.dislikes?.length || 0,

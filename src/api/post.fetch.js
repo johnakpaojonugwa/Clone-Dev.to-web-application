@@ -8,7 +8,7 @@ export async function fetchPostById({ baseURL, token, id, signal } = {}) {
     signal,
   });
 
-  // Special-case unauthorized so callers can react (logout/redirect)
+  // Unauthorised (logout/redirect)
   if (res.status === 401) {
     const err = new Error("Unauthorized");
     err.status = 401;
@@ -21,7 +21,6 @@ export async function fetchPostById({ baseURL, token, id, signal } = {}) {
 
   const data = await res.json().catch(() => null);
 
-  // Unwrap common shapes: { post }, { data: { post } }, raw post, or array
   let post = null;
   if (!data) post = null;
   else if (data.post) post = data.post;
@@ -29,7 +28,6 @@ export async function fetchPostById({ baseURL, token, id, signal } = {}) {
   else if (data.data) post = data.data;
   else post = data;
 
-  // If the API returned an array with a single item, return the item
   if (Array.isArray(post) && post.length === 1) post = post[0];
 
   return post;

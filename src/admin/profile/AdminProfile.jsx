@@ -9,7 +9,6 @@ export default function AdminProfile() {
   const { user, baseURL, userToken, isDarkMode } = useApp();
   const [loading, setLoading] = useState(false);
 
-  // Note: users state was fetched but not used in original return; kept logic but cleaned up
   const fetchUsers = async () => {
     if (!userToken || !baseURL) return;
     setLoading(true);
@@ -43,11 +42,11 @@ export default function AdminProfile() {
         className="overflow-hidden rounded-2xl shadow-xl bg-white dark:bg-gray-800 transition-all duration-300"
         bodyStyle={{ padding: 0 }}
       >
-        {/* Decorative Header Background */}
+        {/* Header Background */}
         <div className="h-32 bg-linear-to-r from-indigo-600 to-purple-600" />
 
         <div className="px-8 pb-8">
-          {/* Avatar Section - Pulling up over the gradient */}
+          {/* Avatar Section */}
           <div className="relative flex justify-between items-end -mt-12 mb-6">
             <div className="p-1 bg-white dark:bg-gray-800 rounded-full shadow-lg">
               <Avatar

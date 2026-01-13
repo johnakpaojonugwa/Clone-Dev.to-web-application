@@ -18,11 +18,10 @@ export default function AuthorSidebar({ author, currentPostId }) {
     const fetchMoreFromAuthor = async () => {
       setLoadingPosts(true);
       try {
-        // Adjust this endpoint to match your backend (e.g., /posts?author=ID)
         const res = await fetch(`${baseURL}/posts?author=${author._id}&limit=4`);
         const result = await res.json();
         if (result.success) {
-          // Filter out the current post so they don't see the same one in the sidebar
+          // Filtering the current post so they don't see the same one in the sidebar
           const filtered = (result.data || result.posts).filter(
             (p) => p._id !== currentPostId
           );
@@ -38,7 +37,7 @@ export default function AuthorSidebar({ author, currentPostId }) {
     fetchMoreFromAuthor();
   }, [author?._id, currentPostId, baseURL]);
 
-  // ---------- FALLBACKS ----------
+  // FALLBACKS
   const avatar = author?.avatar || "https://i.pravatar.cc/100";
   const fullname = author?.fullname || author?.name || "Bit Forge";
   const bio = author?.bio || "No bio available.";
@@ -54,7 +53,7 @@ export default function AuthorSidebar({ author, currentPostId }) {
 
   return (
     <div className="space-y-3">
-      {/* --- PROFILE CARD --- */}
+      {/* PROFILE CARD */}
       <aside className="bg-white border border-gray-200 rounded-lg p-4 space-y-4">
         <div className="flex items-end gap-3">
           <Avatar src={avatar} className="w-20 h-20 rounded-full shrink-0" />
@@ -76,7 +75,7 @@ export default function AuthorSidebar({ author, currentPostId }) {
         </div>
       </aside>
 
-      {/* --- DYNAMIC "MORE FROM" SECTION --- */}
+      {/* DYNAMIC "MORE FROM" SECTION */}
       <aside className="bg-white border border-gray-200 rounded-lg overflow-hidden">
         <div className="p-4 space-y-4">
           <h3 className="border-b border-gray-200 text-xl font-bold pb-2">
@@ -110,7 +109,7 @@ export default function AuthorSidebar({ author, currentPostId }) {
         </div>
       </aside>
 
-      {/* --- PROMOTED SECTION (Mailgun) --- */}
+      {/* PROMOTED SECTION (Mailgun) */}
       <aside className="bg-white border border-gray-200 rounded-lg p-4 space-y-2">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">

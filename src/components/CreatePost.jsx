@@ -30,7 +30,6 @@ function CreatePost() {
       tags: tags.map(t => t.value),
       content,
     };
-    // send `postData` to backend API with basic feedback
     setIsSubmitting(true);
     try {
       const res = await fetch(`${baseURL}/posts`, {
@@ -43,7 +42,7 @@ function CreatePost() {
         message.error(err.message || "Failed to publish post");
       } else {
         message.success("Post published");
-        // Optionally clear form
+        // Clear form
         setTitle("");
         setBackCover("");
         setTags([]);

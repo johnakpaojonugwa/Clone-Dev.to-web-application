@@ -9,7 +9,7 @@ export default function PostContent({ post }) {
   const [comments, setComments] = useState([]);
   const [fetchingComments, setFetchingComments] = useState(false);
 
-  // 1. DATA NORMALIZATION (Keep this at the top)
+  // 1. DATA NORMALIZATION 
   const p = post?.post || post?.data || post || {};
 
   const data = {
@@ -60,7 +60,6 @@ export default function PostContent({ post }) {
         setCommentText("");
         message.success("Comment added!");
 
-        // Use result.data from your controller
         const newComment = {
           ...result.data,
           user: {
@@ -136,7 +135,7 @@ if (!data.id && !post) {
         </div>
       </div>
 
-      {/* --- COMMENT SECTION --- */}
+      {/* COMMENT SECTION */}
       <div className="mt-10 pt-10 border-t border-gray-100 px-6 md:px-16 pb-10 bg-gray-50/50">
         <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
           Discussion{" "}
@@ -180,7 +179,6 @@ if (!data.id && !post) {
         {/* Comments List */}
         <div className="space-y-6">
           {fetchingComments ? (
-            // Using Skeleton for individual comments
             <>
               <Skeleton active avatar paragraph={{ rows: 2 }} />
               <Skeleton active avatar paragraph={{ rows: 2 }} />
